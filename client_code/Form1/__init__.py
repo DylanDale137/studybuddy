@@ -8,3 +8,33 @@ class Form1(Form1Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  @handle("link_register", "click")
+  def link_register_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
+
+  @handle("link_login", "click")
+  def link_login_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
+
+  @handle("link_account", "click")
+  def link_account_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
+
+  @handle("link_home", "click")
+  def link_home_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
+
+  @handle("link_chat", "click")
+  def link_chat_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
+
+  @handle("link_subjects", "click")
+  def link_subjects_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here
