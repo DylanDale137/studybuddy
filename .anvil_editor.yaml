@@ -4,6 +4,10 @@ unique_ids:
     theme.css: 26HWWBP4WIYCXWVZDA5IMOLFDHNFNJHB
   forms:
     Form1: GSIIKVLGPVSXE36HXDTDTJR3RAZC6HDM
+    Form1.ItemTemplate1: '1778455180968544926120911.013'
+    Form1.ItemTemplate2: '1778455627332654986194454.5627'
+    Form1.ItemTemplate3: '1778455630940838112836493.6239'
+    Form1.ItemTemplate4: '1778455636312860414532290.5933'
   modules: {}
   scripts: {}
   server_modules: {}

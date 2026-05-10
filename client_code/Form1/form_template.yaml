@@ -3,10 +3,44 @@ components:
   name: content_panel
   properties: {}
   type: ColumnPanel
-- layout_properties: {slot: nav-right}
+- components:
+  - layout_properties: {}
+    name: link_register
+    properties: {text: Register}
+    type: Link
+  - layout_properties: {}
+    name: link_login
+    properties: {text: Login}
+    type: Link
+  - layout_properties: {}
+    name: link_account
+    properties: {text: Account}
+    type: Link
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
+- layout_properties: {slot: title}
+  name: headline_1
+  properties: {role: headline, text: Placeholder}
+  type: Label
+- components:
+  - layout_properties: {grid_position: 'EPRTIT,KIVCZU'}
+    name: link_home
+    properties: {icon: 'fa:home', text: Home}
+    type: Link
+  - layout_properties: {grid_position: 'OODAGP,XOFSAC'}
+    name: link_chat
+    properties: {icon: 'fa:comments', text: Chat}
+    type: Link
+  - layout_properties: {grid_position: 'YLBXLM,JZYECN'}
+    name: link_3
+    properties: {icon: 'fa:book', text: Subjects}
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
