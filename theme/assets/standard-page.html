@@ -20,7 +20,20 @@
     <div class="left-nav-placeholder anvil-designer-only" anvil-if-slot-empty="left-nav" anvil-drop-slot="left-nav">
       <div class="prompt">To add a sidebar, drop a ColumnPanel here.</div>
     </div>
+  <div class="content">
+      <div anvil-slot-repeat="default" class="anvil-measure-this"></div>
+      <div class="placeholder drop-here" anvil-if-slot-empty="default" anvil-drop-slot="default">
+        Drop a ColumnPanel here.
+      </div>
+  </div>
 
+    <!-- ⭐ NEW SECOND SIDEBAR ⭐ -->
+<div class="right-nav anvil-measure-this" anvil-slot-repeat="right-nav" anvil-drop-container=">.anvil-container"></div>
+<div class="right-nav-placeholder anvil-designer-only"
+      anvil-if-slot-empty="right-nav"
+      anvil-drop-slot="right-nav">
+      <div class="prompt">To add a right sidebar, drop a ColumnPanel here.</div>
+    </div>
     <div class="content">
       <div anvil-slot-repeat="default" class="anvil-measure-this"></div>
       <div class="placeholder drop-here" anvil-if-slot-empty="default" anvil-drop-slot="default">Drop a ColumnPanel here.</div>
