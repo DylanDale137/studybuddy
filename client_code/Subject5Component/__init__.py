@@ -1,8 +1,7 @@
-from ._anvil_designer import ItemTemplate2Template
+from ._anvil_designer import Subject5ComponentTemplate
 from anvil import *
 
-
-class ItemTemplate2(ItemTemplate2Template):
+class Subject5Component(Subject5ComponentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
