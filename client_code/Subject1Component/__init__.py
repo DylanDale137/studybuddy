@@ -12,8 +12,8 @@ class Subject1Component(Subject1ComponentTemplate):
 
     # Any code you write here will run before the form opens.
 
-  @handle("file_loader_1", "change")
-  def file_loader_1_change(self, file, **event_args):
+  @handle("file_loader_subject1", "change")
+  def file_loader_subject1_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
     print(f"The file's name is: {file.name}")
     print(f"The number of bytes in the file is: {file.length}")

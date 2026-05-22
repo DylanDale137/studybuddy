@@ -18,7 +18,7 @@ components:
     type: Label
   - components:
     - layout_properties: {grid_position: 'BZWUPS,GSSYIR'}
-      name: file_loader_1
+      name: file_loader_subject1
       properties: {}
       type: FileLoader
     - layout_properties: {grid_position: 'FBEIAN,UITTFO'}
@@ -29,7 +29,25 @@ components:
     name: card_2
     properties: {role: card}
     type: ColumnPanel
-  - layout_properties: {col_xs: 7, row: RYRDUR, width_xs: 5}
+  - components:
+    - components:
+      - layout_properties: {col_xs: 0, row: XNMNWY, width_xs: 8}
+        name: text_box_subject1
+        properties: {placeholder: Insert message here}
+        type: TextBox
+      - layout_properties: {col_xs: 8, row: XNMNWY, width_xs: 4}
+        name: button_send
+        properties: {icon: '', role: primary-color, text: Send}
+        type: Button
+      layout_properties: {grid_position: 'GBIPTT,CXLPGC'}
+      name: grid_panel_2
+      properties: {}
+      type: GridPanel
+    - layout_properties: {grid_position: 'JPKSSS,PNDYCR'}
+      name: repeating_panel_2
+      properties: {item_template: Subject1Component.ItemTemplate3}
+      type: RepeatingPanel
+    layout_properties: {col_xs: 7, row: RYRDUR, width_xs: 5}
     name: card_3
     properties: {role: card}
     type: ColumnPanel
