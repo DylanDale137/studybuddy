@@ -3,6 +3,10 @@ components:
   name: headline_1
   properties: {align: center, bold: true, role: headline, text: Set Details}
   type: Label
+- layout_properties: {grid_position: 'YDRFPF,XHDHJM'}
+  name: headline_error
+  properties: {align: center, foreground: '#ff0000', icon: 'fa:warning', role: headline, text: Login to access this feature, visible: false}
+  type: Label
 - components:
   - layout_properties: {grid_position: 'EAKPTB,QKQDUS'}
     name: label_1

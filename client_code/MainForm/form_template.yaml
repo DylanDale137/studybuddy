@@ -16,12 +16,16 @@ components:
     name: link_account
     properties: {text: Account}
     type: Link
+  - layout_properties: {}
+    name: link_logout
+    properties: {text: Logout}
+    type: Link
   layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
 - layout_properties: {slot: title}
-  name: headline_1
+  name: headline_group_name
   properties: {role: headline, text: Placeholder}
   type: Label
 - components:

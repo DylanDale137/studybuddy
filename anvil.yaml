@@ -1,5 +1,31 @@
 allow_embedding: false
 db_schema:
+  chat:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      client_hidden: false
+      name: content
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: false
+      name: user
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: time_sent
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      client_hidden: false
+      name: group_name
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      client_hidden: false
+      name: subject
+      type: string
+    indexes: []
+    server: full
+    title: Chat
   files:
     client: none
     columns:
@@ -7,9 +33,85 @@ db_schema:
       client_hidden: false
       name: File
       type: media
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: false
+      name: file_group
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: file_subject
+      type: string
     indexes: []
     server: full
     title: Files
+  groups:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      client_hidden: false
+      name: group_name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: true
+      name: group_password
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: group_owner
+      type: string
+    indexes: []
+    server: full
+    title: Groups
+  users:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      client_hidden: false
+      name: email
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: true
+      name: enabled
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: true
+      name: last_login
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      client_hidden: true
+      name: password_hash
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      client_hidden: true
+      name: n_password_failures
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      client_hidden: true
+      name: confirmed_email
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      client_hidden: true
+      name: remembered_logins
+      type: simpleObject
+    - admin_ui: {order: 7, width: 200}
+      client_hidden: true
+      name: signed_up
+      type: datetime
+    - admin_ui: {order: 8, width: 200}
+      client_hidden: false
+      name: first_name
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      client_hidden: false
+      name: last_name
+      type: string
+    - admin_ui: {order: 10, width: 200}
+      client_hidden: false
+      name: group_name
+      type: string
+    indexes: []
+    server: full
+    title: Users
 name: Placeholder
 package_name: Placeholder
 runtime_options:
@@ -21,5 +123,8 @@ services:
 - client_config: {enable_v2: true}
   server_config: {auto_create_missing_columns: true}
   source: /runtime/services/tables.yml
+- client_config: {allow_remember_me: true, allow_signup: true, confirm_email: false, enable_automatically: true, remember_me_days: 30, use_email: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
 startup: {module: MainForm, type: form}
 startup_form: null
