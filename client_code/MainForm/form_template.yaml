@@ -42,6 +42,10 @@ components:
     name: link_subjects
     properties: {icon: 'fa:book', text: Subjects}
     type: Link
+  - layout_properties: {grid_position: 'CSNSDS,ZUGGTJ'}
+    name: link_add
+    properties: {icon: 'fa:plus', role: null, text: Add}
+    type: Link
   layout_properties: {slot: left-nav}
   name: column_panel_1
   properties: {}

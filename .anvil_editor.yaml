@@ -19,4 +19,6 @@ unique_ids:
   modules: {}
   scripts: {}
   server_modules:
+    group_service: '1779605784131876763054438.1691'
+    subject_service: '1779605759440887996730617.6615'
     user_service: '1779080845867755898125799.6416'

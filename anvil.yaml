@@ -49,16 +49,17 @@ db_schema:
     columns:
     - admin_ui: {order: 0, width: 200}
       client_hidden: false
-      name: group_name
+      name: name
       type: string
     - admin_ui: {order: 1, width: 200}
       client_hidden: true
-      name: group_password
+      name: code
       type: string
     - admin_ui: {order: 2, width: 200}
       client_hidden: false
-      name: group_owner
-      type: string
+      name: user
+      target: users
+      type: link_single
     indexes: []
     server: full
     title: Groups
@@ -89,6 +90,10 @@ db_schema:
       client_hidden: false
       name: group_name
       type: string
+    - admin_ui: {order: 6, width: 200}
+      client_hidden: false
+      name: Order
+      type: number
     indexes: []
     server: full
     title: Subjects

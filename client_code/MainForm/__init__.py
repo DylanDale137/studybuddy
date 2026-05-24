@@ -42,6 +42,9 @@ class MainForm(MainFormTemplate):
 
     elif state == "group":
       cmpt = GroupComponent()
+
+    elif state == "add":
+      cmpt = AddComponent()
       
   
       # execution
@@ -65,6 +68,10 @@ class MainForm(MainFormTemplate):
       self.link_subjects.role = "selected"
     else:
       self.link_subjects.role = None
+    if state == "add":
+      self.link_add.role = "selected"
+    else:
+      self.link_add.role = None
 
     self.link_register.visible = not anvil.users.get_user()
     self.link_login.visible = not anvil.users.get_user()
@@ -113,5 +120,10 @@ class MainForm(MainFormTemplate):
       # Write Code Here
     
     self.set_active_link("subjects")
+
+  @handle("link_add", "click")
+  def link_add_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.switch_component("add")
   
   
