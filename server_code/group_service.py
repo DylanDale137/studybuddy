@@ -7,7 +7,10 @@ import anvil.server
 @anvil.server.callable
 def add_group(name, code):
   user = anvil.users.get_user()
-
+  
+  
   app_tables.groups.add_row(name= name,
                                  code=code,
                                  user= user)
+  
+  
