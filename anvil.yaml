@@ -57,7 +57,7 @@ db_schema:
       client_hidden: true
       name: code
       type: string
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       client_hidden: false
       name: user
       target: users
@@ -148,6 +148,10 @@ db_schema:
       name: group_name
       target: groups
       type: link_single
+    - admin_ui: {}
+      client_hidden: null
+      name: group
+      type: string
     indexes: []
     server: full
     title: Users
