@@ -12,6 +12,7 @@ class SetDetailsComponent(SetDetailsComponentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     if not anvil.users.get_user():
       self.headline_error.visible = True
       self.card_1.visible = False
@@ -20,6 +21,11 @@ class SetDetailsComponent(SetDetailsComponentTemplate):
       self.card_1.visible = True
       self.button_save.visible = True
       self.headline_error.visible = False
+      user = anvil.users.get_user()
+      if user["first_name"]:
+        self.text_box_first_name.text = user["first_name"]
+      if user["last_name"]:
+        self.text_box_last_name.text = user["last_name"]
     # Any code you write here will run before the form opens.
   @handle('button_save', 'click')
   def button_save_click(self, **event_args):
@@ -40,7 +46,10 @@ class SetDetailsComponent(SetDetailsComponentTemplate):
                       self.text_box_last_name.text)
 
     main_form = get_open_form()
-    main_form.content_panel.clear()
-    main_form.content_panel.add_component(GroupComponent())
+    user = anvil.users.get_user()
+    if not user["group_name"]:
+      main_form.switch_component("group")
+    else:
+      main_form.switch_component("account")
     
     
