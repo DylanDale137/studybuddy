@@ -6,7 +6,7 @@ unique_ids:
     AccountComponent: '1778639484759676888493173.9918'
     AddComponent: '1778639533199755990381344.7313'
     ChatComponent: '1778639667910766136349001.3446'
-    ChatComponent.ItemTemplate1: '1779078501513743288426041.9762'
+    ChatComponent.ChatRowComponent: '1779078501513743288426041.9762'
     GroupComponent: '1779511609224993231377452.4198'
     HomeComponent: '1778640653665104894138742.73611'
     MainForm: GSIIKVLGPVSXE36HXDTDTJR3RAZC6HDM
@@ -19,6 +19,7 @@ unique_ids:
   modules: {}
   scripts: {}
   server_modules:
+    chat_service: '1779662843563858395413747.1248'
     group_service: '1779605784131876763054438.1691'
     subject_service: '1779605759440887996730617.6615'
     user_service: '1779080845867755898125799.6416'
