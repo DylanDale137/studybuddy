@@ -6,22 +6,16 @@ import anvil.server
 
 @anvil.server.callable
 def add_group(name, code):
+  app_tables.groups.add_row(
+    name=name,
+    code=code
+  )
   user = anvil.users.get_user()
-  
-  
-  app_tables.groups.add_row(name= name,
-                                 code=code,
-                                 user= user)
-  
+  user['group_name'] = name
 
+@anvil.server.callable
 def check_group(name, code):
-  for i in app_tables.groups.search("name"):
-    if name == i:
-      if code == app_tables.groups.search("code"):
-        user = anvil.users.get_user()
-        app_tables.groups.add_row(user =+ user)
-        return True
+  group = app_tables.groups.get(name=name, code=code)
+  if group:
+    return True
   return False
-
-  
-  

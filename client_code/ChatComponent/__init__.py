@@ -15,7 +15,11 @@ class ChatComponent(ChatComponentTemplate):
     self.load_messages()
 
   def load_messages(self):
-    messages = anvil.server.call('get_messages', 'chat')
+    user = anvil.users.get_user()
+    if not user:
+      return
+    group_name = user['group_name']
+    messages = anvil.server.call('get_messages', 'chat', group_name)
     self.repeating_panel_chat.items = messages
 
   @handle("button_send", "click")
@@ -23,12 +27,10 @@ class ChatComponent(ChatComponentTemplate):
     message = self.text_box_message.text
     if not message:
       return
-
     user = anvil.users.get_user()
     if not user:
       alert("You must be logged in to send a message.")
       return
-
     local_time = datetime.now(tz=BRISBANE_OFFSET)
     anvil.server.call('add_message', user['first_name'], message, 'chat', local_time)
     self.text_box_message.text = ""

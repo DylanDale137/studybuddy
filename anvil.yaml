@@ -19,11 +19,10 @@ db_schema:
       client_hidden: false
       name: subject
       type: string
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       client_hidden: false
-      name: group
-      target: groups
-      type: link_single
+      name: group_name
+      type: string
     indexes: []
     server: full
     title: Chat
@@ -57,11 +56,6 @@ db_schema:
       client_hidden: true
       name: code
       type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: user
-      target: users
-      type: link_single
     indexes: []
     server: full
     title: Groups
@@ -143,14 +137,9 @@ db_schema:
       client_hidden: false
       name: last_name
       type: string
-    - admin_ui: {order: 10, width: 200}
-      client_hidden: false
-      name: group_name
-      target: groups
-      type: link_single
     - admin_ui: {}
       client_hidden: null
-      name: group
+      name: group_name
       type: string
     indexes: []
     server: full

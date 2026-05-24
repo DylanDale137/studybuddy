@@ -8,27 +8,9 @@ from anvil.tables import app_tables
 
 class GroupComponent(GroupComponentTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     super().__init__(**properties)
     self.name = ""
     self.code = ""
-    
-    # Any code you write here will run before the form opens.
-
-  @handle("button_join", "click")
-  def button_join_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
-
-  @handle("button_join_cancel", "click")
-  def button_join_cancel_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
-
-  @handle("button_join_confirm", "click")
-  def button_join_confirm_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
 
   @handle("button_create_confirm", "click")
   def button_create_confirm_click(self, **event_args):
@@ -40,8 +22,8 @@ class GroupComponent(GroupComponentTemplate):
     else:
       self.name = self.text_box_create_name.text
       self.code = self.text_box_create_code.text
-      self.display_save(f"{self.name} create with the password: {self.code}")
       anvil.server.call('add_group', self.name, self.code)
+      self.display_save(f"{self.name} created with the password: {self.code}")
       self.reset_form()
 
   def display_error(self, message):
@@ -63,15 +45,32 @@ class GroupComponent(GroupComponentTemplate):
     self.code = ""
     self.text_box_create_name.text = ""
     self.text_box_create_code.text = ""
-    
-  @handle("button_create_cancel", "click")
-  def button_create_cancel_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
 
   @handle("button_create", "click")
   def button_create_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.card_create.visible = not self.card_create.visible
+
+  @handle("button_create_cancel", "click")
+  def button_create_cancel_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.card_create.visible = not self.card_create.visible
+
+  
+
+  @handle("button_join", "click")
+  def button_join_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass  # Write Code Here
+
+  @handle("button_join_cancel", "click")
+  def button_join_cancel_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass  # Write Code Here
+
+  @handle("button_join_confirm", "click")
+  def button_join_confirm_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass  # Write Code Here
 
   
