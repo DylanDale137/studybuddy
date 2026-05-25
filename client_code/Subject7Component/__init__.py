@@ -73,3 +73,8 @@ class Subject7Component(Subject7ComponentTemplate):
     )
     self.text_box_subject1.text = ""
     self.load_messages()
+
+  @handle("timer_1", "tick")
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    self.load_messages()

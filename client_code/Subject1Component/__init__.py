@@ -72,3 +72,8 @@ class Subject1Component(Subject1ComponentTemplate):
     anvil.server.call_s('add_message', user['first_name'], message, 'subject1', local_time)
     self.text_box_subject1.text = ""
     self.load_messages()
+
+  @handle("timer_1", "tick")
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    self.load_messages()

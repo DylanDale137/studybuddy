@@ -56,3 +56,9 @@ class ChatComponent(ChatComponentTemplate):
   @handle("repeating_panel_chat", "x-refresh-message")
   def refresh_messages(self, **event_args):
     self.load_messages()
+
+  @handle("timer_1", "tick")
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    self.load_messages()
+  
