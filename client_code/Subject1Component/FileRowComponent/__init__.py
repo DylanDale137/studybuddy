@@ -11,7 +11,7 @@ class FileRowComponent(FileRowComponentTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
     self.image_preloader.source = self.item['file']
-    
+  
 
   @handle("button_download", "click")
   def button_download_click(self, **event_args):

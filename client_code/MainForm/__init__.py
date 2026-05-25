@@ -13,10 +13,10 @@ from ..WelcomeComponent import WelcomeComponent
 from ..ChatComponent import ChatComponent
 from ..GroupComponent import GroupComponent
 from ..Subject1Component import Subject1Component
-from ..Subject2Component import Subject2Component
+'''from ..Subject2Component import Subject2Component
 from ..Subject3Component import Subject3Component
 from ..Subject4Component import Subject4Component
-from ..Subject5Component import Subject5Component
+from ..Subject5Component import Subject5Component'''
 
 class MainForm(MainFormTemplate):
   def __init__(self, **properties):
