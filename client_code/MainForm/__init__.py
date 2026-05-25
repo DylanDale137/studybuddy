@@ -28,14 +28,22 @@ class MainForm(MainFormTemplate):
     
 
     # Any code you write here will run before the form opens.
-    self.content_panel.add_component(HomeComponent())
+    user = anvil.users.get_user()
+    if user:
+      self.content_panel.add_component(ChatComponent())
+    else:
+      self.content_panel.add_component(WelcomeComponent())
     self.set_active_link("home")
   def switch_label(self, change):
     self.headline_group_name.text = change
     
   def switch_component(self, state):
     if state == "home":
-      cmpt = HomeComponent()
+      user = anvil.users.get_user()
+      if user:
+        cmpt = ChatComponent()
+      else:
+        cmpt = WelcomeComponent()
     elif state == "account":
       cmpt = AccountComponent()
     elif state == "add":

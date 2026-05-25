@@ -1,7 +1,7 @@
 components:
 - layout_properties: {grid_position: 'XYZJUK,XZWBHZ'}
   name: headline_1
-  properties: {align: center, bold: true, role: headline, text: Chat}
+  properties: {align: center, bold: true, role: headline, text: General Chat}
   type: Label
 - components:
   - components:

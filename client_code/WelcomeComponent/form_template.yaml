@@ -1,3 +1,45 @@
-components: []
+components:
+- layout_properties: {grid_position: 'KUWETR,WXJNVN'}
+  name: headline_1
+  properties: {align: center, role: headline, text: Welcome to StudyBuddy}
+  type: Label
+- components:
+  - layout_properties: {grid_position: 'DVUTCE,QQMQOA'}
+    name: image_1
+    properties: {display_mode: shrink_to_fit, height: 404.5, source: _/theme/Copilot_20260525_212848_compressed.png}
+    type: Image
+  - layout_properties: {grid_position: 'DXCFMB,EOJUSU'}
+    name: label_1
+    properties: {bold: true, text: Take your studying to the next level with StudyBuddy and study with all of your friends.}
+    type: Label
+  - components:
+    - layout_properties: {grid_position: 'YGORDM,PICSDI VHXFOP,GRUKXR'}
+      name: image_2
+      properties: {source: _/theme/Copilot_20260525_213814.png}
+      type: Image
+    - layout_properties: {grid_position: 'YGORDM,PICSDI VAFWRD,CCKSTO'}
+      name: label_2
+      properties: {text: Enjoy the security of private groups that saves conversations for newcomers.}
+      type: Label
+    - layout_properties: {grid_position: 'YGORDM,GSVMJV XJTTYA,BLOZKO'}
+      name: image_3
+      properties: {source: _/theme/Copilot_20260525_214141.png}
+      type: Image
+    - layout_properties: {grid_position: 'YGORDM,GSVMJV SMQRRB,ILIVKG'}
+      name: label_3
+      properties: {text: Enjoy the customizability that comes with creating new subjects and how each subject has its own file and chat area.}
+      type: Label
+    layout_properties: {grid_position: 'BTQEKG,TCRPGV'}
+    name: card_2
+    properties: {role: card}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'CNZZLY,FVULEL'}
+    name: headline_2
+    properties: {role: headline, text: Register to get started with StudyBuddy}
+    type: Label
+  layout_properties: {grid_position: 'WGDBWJ,MABKFA'}
+  name: card_1
+  properties: {role: card}
+  type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true
