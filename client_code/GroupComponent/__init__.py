@@ -11,11 +11,9 @@ class GroupComponent(GroupComponentTemplate):
     super().__init__(**properties)
     self.name = ""
     self.code = ""
-    self.label_group_name_1.text = ""
-    self.label_group_code_1.text = ""
     user = anvil.users.get_user()
-    group_name = user["group_name"]
-    code = anvil.server.call('get_group_code', group_name)
+    group_name = user["group_name"] if user else None
+    code = anvil.server.call('get_group_code', group_name) if group_name else None
     if group_name:
       self.card_no_group.visible = False
       self.card_in_group.visible = True
@@ -26,7 +24,6 @@ class GroupComponent(GroupComponentTemplate):
       self.card_in_group.visible = False
   @handle("button_create_confirm", "click")
   def button_create_confirm_click(self, **event_args):
-    """This method is called when the button is clicked"""
     if not self.text_box_create_name.text:
       self.display_error("Group name needed")
     elif not self.text_box_create_code.text:
@@ -34,11 +31,14 @@ class GroupComponent(GroupComponentTemplate):
     else:
       self.name = self.text_box_create_name.text
       self.code = self.text_box_create_code.text
-      anvil.server.call('add_group', self.name, self.code)
-      self.display_save(f"{self.name} created with the password: {self.code}")
-      main_form = get_open_form()
-      main_form.switch_label(self.text_box_create_name.text)
-      main_form.switch_component("home")
+      result = anvil.server.call('add_group', self.name, self.code)
+      if result == 'name_taken':
+        self.display_error(f"A group named '{self.name}' already exists.")
+      elif result == 'not_logged_in':
+        self.display_error("You must be logged in to create a group.")
+      else:
+        self.display_save(f"{self.name} created with the password: {self.code}")
+        self.reset_form()
       
 
   def display_error(self, message):
@@ -93,19 +93,16 @@ class GroupComponent(GroupComponentTemplate):
     else:
       name = self.text_box_join_name.text
       code = self.text_box_join_code.text
-      success = anvil.server.call('check_group', name, code)
-      if success:
+      result = anvil.server.call('check_group', name, code)
+      if result == 'not_logged_in':
+        self.display_error("You must be logged in to join a group.")
+      elif result == 'not_found':
+        self.display_error("No group found with that name and password.")
+      else:
         self.display_save(f"Successfully joined {name}!")
-        main_form = get_open_form()
-        main_form.switch_label(name)
         self.text_box_join_name.text = ""
         self.text_box_join_code.text = ""
         self.card_join.visible = False
-        
-        main_form.switch_component("home")
-      else:
-        self.display_error("No group found with that name and password.")
-
   @handle("button_leave", "click")
   def button_leave_click(self, **event_args):
     """This method is called when the button is clicked"""
