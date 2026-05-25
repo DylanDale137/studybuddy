@@ -17,5 +17,7 @@ def add_group(name, code):
 def check_group(name, code):
   group = app_tables.groups.get(name=name, code=code)
   if group:
+    user = anvil.users.get_user()
+    user['group_name'] = name
     return True
   return False

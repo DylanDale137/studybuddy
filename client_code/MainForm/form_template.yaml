@@ -52,7 +52,7 @@ components:
   type: ColumnPanel
 - layout_properties: {slot: left-nav}
   name: repeating_panel_subjects
-  properties: {item_template: MainForm.SubjectList, role: card, visible: false}
+  properties: {item_template: MainForm.SubjectRowComponent, role: card, visible: false}
   type: RepeatingPanel
 container:
   properties: {html: '@theme:standard-page.html'}

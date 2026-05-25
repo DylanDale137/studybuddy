@@ -1,4 +1,4 @@
-from ._anvil_designer import Subject1ComponentTemplate
+from ._anvil_designer import Subject2ComponentTemplate
 from anvil import *
 import anvil.users
 import anvil.tables as tables
@@ -6,7 +6,8 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-class Subject1Component(Subject1ComponentTemplate):
+
+class Subject2Component(Subject2ComponentTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
     self.load_files()
@@ -20,13 +21,13 @@ class Subject1Component(Subject1ComponentTemplate):
     if not user:
       alert("You must be logged in to upload a file.")
       return
-    anvil.server.call('add_file', file, 'subject1')
+    anvil.server.call("add_file", file, "subject2")
     self.load_files()
 
   def load_files(self):
     user = anvil.users.get_user()
     if not user:
       return
-    group_name = user['group_name']
-    files = anvil.server.call('get_files', 'subject1', group_name)
+    group_name = user["group_name"]
+    files = anvil.server.call("get_files", "subject2", group_name)
     self.repeating_panel_1.items = files

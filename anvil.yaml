@@ -35,13 +35,16 @@ db_schema:
       type: media
     - admin_ui: {order: 2, width: 200}
       client_hidden: false
-      name: file_subject
+      name: subject
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       client_hidden: false
       name: group
-      target: groups
-      type: link_single
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      client_hidden: false
+      name: time_sent
+      type: datetime
     indexes: []
     server: full
     title: Files
@@ -82,15 +85,14 @@ db_schema:
       client_hidden: false
       name: assessment_description
       type: string
-    - admin_ui: {order: 5, width: 200}
-      client_hidden: false
-      name: group
-      target: groups
-      type: link_single
     - admin_ui: {order: 6, width: 200}
       client_hidden: false
       name: order
       type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: group
+      type: string
     indexes: []
     server: full
     title: Subjects

@@ -12,6 +12,11 @@ from ..SetDetailsComponent import SetDetailsComponent
 from ..WelcomeComponent import WelcomeComponent
 from ..ChatComponent import ChatComponent
 from ..GroupComponent import GroupComponent
+from ..Subject1Component import Subject1Component
+from ..Subject2Component import Subject2Component
+from ..Subject3Component import Subject3Component
+from ..Subject4Component import Subject4Component
+from ..Subject5Component import Subject5Component
 
 class MainForm(MainFormTemplate):
   def __init__(self, **properties):
@@ -24,33 +29,56 @@ class MainForm(MainFormTemplate):
     self.set_active_link("home")
     
   def switch_component(self, state):
-    # set state
     if state == "home":
       cmpt = HomeComponent()
-      
     elif state == "account":
       cmpt = AccountComponent()
-      
     elif state == "add":
       cmpt = AddComponent()
-      
     elif state == "chat":
       cmpt = ChatComponent()
-      
     elif state == "details":
       cmpt = SetDetailsComponent()
-
     elif state == "group":
       cmpt = GroupComponent()
+    elif state == "subject1":
+      subject = anvil.server.call('get_subject_by_order', 1)
+      if subject:
+        cmpt = Subject1Component()
+      else:
+        alert("No subject found.")
+        return
+    elif state == "subject2":
+      subject = anvil.server.call('get_subject_by_order', 2)
+      if subject:
+        cmpt = Subject2Component()
+      else:
+        alert("No subject found.")
+        return
+    elif state == "subject3":
+      subject = anvil.server.call('get_subject_by_order', 3)
+      if subject:
+        cmpt = Subject3Component()
+      else:
+        alert("No subject found.")
+        return
+    elif state == "subject4":
+      subject = anvil.server.call('get_subject_by_order', 4)
+      if subject:
+        cmpt = Subject4Component()
+      else:
+        alert("No subject found.")
+        return
+    elif state == "subject5":
+      subject = anvil.server.call('get_subject_by_order', 5)
+      if subject:
+        cmpt = Subject5Component()
+      else:
+        alert("No subject found.")
+        return
 
-    elif state == "add":
-      cmpt = AddComponent()
-      
-  
-      # execution
     self.content_panel.clear()
     self.content_panel.add_component(cmpt)
-    
     self.set_active_link(state)
   
     # Any code you write here will run before the form opens.
@@ -120,10 +148,12 @@ class MainForm(MainFormTemplate):
       # Write Code Here
     
     self.set_active_link("subjects")
+    self.load_subjects()
 
   @handle("link_add", "click")
   def link_add_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.switch_component("add")
   
-  
+  def load_subjects(self):
+    self.repeating_panel_subjects.items = anvil.server.call('get_subjects')

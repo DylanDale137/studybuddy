@@ -61,16 +61,30 @@ class GroupComponent(GroupComponentTemplate):
   @handle("button_join", "click")
   def button_join_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    self.card_join.visible = not self.card_join.visible
 
   @handle("button_join_cancel", "click")
   def button_join_cancel_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    self.card_join.visible = not self.card_join.visible
 
+  
   @handle("button_join_confirm", "click")
   def button_join_confirm_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    if not self.text_box_join_name.text:
+      self.display_error("Group name needed")
+    elif not self.text_box_join_code.text:
+      self.display_error("Group password needed")
+    else:
+      name = self.text_box_join_name.text
+      code = self.text_box_join_code.text
+      success = anvil.server.call('check_group', name, code)
+      if success:
+        self.display_save(f"Successfully joined {name}!")
+        self.text_box_join_name.text = ""
+        self.text_box_join_code.text = ""
+        self.card_join.visible = False
+      else:
+        self.display_error("No group found with that name and password.")
 
   
