@@ -6,13 +6,17 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-
 class FileRowComponent(FileRowComponentTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    self.image_preloader.source = self.item['file']
-  
+    self.image_preloader.source = self.item['File']
 
   @handle("button_download", "click")
   def button_download_click(self, **event_args):
-    download(self.item['file'])
+    download(self.item['File'])
+  @handle("button_delete", "click")
+  def button_delete_click(self, **event_args):
+    anvil.server.call('delete_file', self.item.get_id())
+    self.parent.raise_event('x-refresh-files')
+
+  

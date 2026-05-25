@@ -14,5 +14,11 @@ class ChatRowComponent(ChatRowComponentTemplate):
     self.label_time.text = item['time_sent'].strftime('%H:%M')
     self.label_text.text = item['content']
 
+  @handle("button_delete", "click")
+  def button_delete_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('delete_message', self.item.get_id())
+    self.parent.raise_event('x-refresh-message')
+
 
     

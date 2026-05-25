@@ -1,4 +1,4 @@
-from ._anvil_designer import Subject1ComponentTemplate
+from ._anvil_designer import Subject8ComponentTemplate
 from anvil import *
 import anvil.users
 import anvil.tables as tables
@@ -6,22 +6,25 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, timezone, timedelta
+
 BRISBANE_OFFSET = timezone(timedelta(hours=10))
-class Subject1Component(Subject1ComponentTemplate):
+
+
+class Subject8Component(Subject8ComponentTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
     self.load_subject()
     self.load_files()
     self.load_messages()
-    
+
   def load_subject(self):
-    subject = anvil.server.call('get_subject_by_order', 1)
+    subject = anvil.server.call("get_subject_by_order", 8)
     if subject:
-      self.label_subject_name.text = subject['subject_name']
-      self.label_assessment_type.text = subject['assessment_type']
-      self.label_draft_due.text = subject['draft_due'].strftime('%d/%m/%Y')
-      self.label_final_due.text = subject['final_due'].strftime('%d/%m/%Y')
-      self.label_description.text = subject['assessment_description']
+      self.label_subject_name.text = subject["subject_name"]
+      self.label_assessment_type.text = subject["assessment_type"]
+      self.label_draft_due.text = subject["draft_due"].strftime("%d/%m/%Y")
+      self.label_final_due.text = subject["final_due"].strftime("%d/%m/%Y")
+      self.label_description.text = subject["assessment_description"]
 
   @handle("file_loader_subject1", "change")
   def file_loader_subject1_change(self, file, **event_args):
@@ -31,32 +34,28 @@ class Subject1Component(Subject1ComponentTemplate):
     if not user:
       alert("You must be logged in to upload a file.")
       return
-    anvil.server.call('add_file', file, 'subject1')
+    anvil.server.call("add_file", file, "subject8")
     self.load_files()
 
   def load_files(self):
     user = anvil.users.get_user()
     if not user:
       return
-    group_name = user['group_name']
-    files = anvil.server.call('get_files', 'subject1', group_name)
-    
-    self.repeating_panel_1.items = files  
+    group_name = user["group_name"]
+    files = anvil.server.call("get_files", "subject8", group_name)
+
+    self.repeating_panel_1.items = files
+
   @handle("repeating_panel_1", "x-refresh-files")
   def refresh_files(self, **event_args):
     self.load_files()
-  @handle("repeating_panel_2", "x-refresh-message")
-  def refresh_messages(self, **event_args):
-    self.load_messages()
-
-
 
   def load_messages(self):
     user = anvil.users.get_user()
     if not user:
       return
-    group_name = user['group_name']
-    messages = anvil.server.call('get_messages', 'subject1', group_name)
+    group_name = user["group_name"]
+    messages = anvil.server.call("get_messages", "subject8", group_name)
     self.repeating_panel_2.items = messages
 
   @handle("button_send", "click")
@@ -69,6 +68,8 @@ class Subject1Component(Subject1ComponentTemplate):
       alert("You must be logged in to send a message.")
       return
     local_time = datetime.now(tz=BRISBANE_OFFSET)
-    anvil.server.call_s('add_message', user['first_name'], message, 'subject1', local_time)
+    anvil.server.call_s(
+      "add_message", user["first_name"], message, "subject8", local_time
+    )
     self.text_box_subject1.text = ""
     self.load_messages()

@@ -13,10 +13,13 @@ from ..WelcomeComponent import WelcomeComponent
 from ..ChatComponent import ChatComponent
 from ..GroupComponent import GroupComponent
 from ..Subject1Component import Subject1Component
-'''from ..Subject2Component import Subject2Component
+from ..Subject2Component import Subject2Component
 from ..Subject3Component import Subject3Component
 from ..Subject4Component import Subject4Component
-from ..Subject5Component import Subject5Component'''
+from ..Subject5Component import Subject5Component
+from ..Subject6Component import Subject6Component
+from ..Subject7Component import Subject7Component
+from ..Subject8Component import Subject8Component
 
 class MainForm(MainFormTemplate):
   def __init__(self, **properties):
@@ -27,6 +30,8 @@ class MainForm(MainFormTemplate):
     # Any code you write here will run before the form opens.
     self.content_panel.add_component(HomeComponent())
     self.set_active_link("home")
+  def switch_label(self, change):
+    self.headline_group_name.text = change
     
   def switch_component(self, state):
     if state == "home":
@@ -42,41 +47,22 @@ class MainForm(MainFormTemplate):
     elif state == "group":
       cmpt = GroupComponent()
     elif state == "subject1":
-      subject = anvil.server.call('get_subject_by_order', 1)
-      if subject:
-        cmpt = Subject1Component()
-      else:
-        alert("No subject found.")
-        return
+      cmpt = Subject1Component()
     elif state == "subject2":
-      subject = anvil.server.call('get_subject_by_order', 2)
-      if subject:
-        cmpt = Subject2Component()
-      else:
-        alert("No subject found.")
-        return
+      cmpt = Subject2Component()
     elif state == "subject3":
-      subject = anvil.server.call('get_subject_by_order', 3)
-      if subject:
-        cmpt = Subject3Component()
-      else:
-        alert("No subject found.")
-        return
+      cmpt = Subject3Component()
     elif state == "subject4":
-      subject = anvil.server.call('get_subject_by_order', 4)
-      if subject:
-        cmpt = Subject4Component()
-      else:
-        alert("No subject found.")
-        return
+      cmpt = Subject4Component()
     elif state == "subject5":
-      subject = anvil.server.call('get_subject_by_order', 5)
-      if subject:
-        cmpt = Subject5Component()
-      else:
-        alert("No subject found.")
-        return
-
+      cmpt = Subject5Component()
+    elif state == "subject6":
+      cmpt = Subject6Component()
+    elif state == "subject7":
+      cmpt = Subject7Component()
+    elif state == "subject8":
+      cmpt = Subject8Component()
+    self.repeating_panel_subjects.visible = False
     self.content_panel.clear()
     self.content_panel.add_component(cmpt)
     self.set_active_link(state)
@@ -100,6 +86,10 @@ class MainForm(MainFormTemplate):
       self.link_add.role = "selected"
     else:
       self.link_add.role = None
+    if state == "group":
+      self.link_group.role = "selected"
+    else:
+      self.link_group.role = None
 
     self.link_register.visible = not anvil.users.get_user()
     self.link_login.visible = not anvil.users.get_user()
@@ -157,3 +147,8 @@ class MainForm(MainFormTemplate):
   
   def load_subjects(self):
     self.repeating_panel_subjects.items = anvil.server.call('get_subjects')
+
+  @handle("link_group", "click")
+  def link_group_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.switch_component("group")

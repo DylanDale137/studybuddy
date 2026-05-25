@@ -21,3 +21,14 @@ def check_group(name, code):
     user['group_name'] = name
     return True
   return False
+@anvil.server.callable
+def get_group_code(name):
+  group = app_tables.groups.get(name=name)
+  if group:
+    return group['code']
+  return None
+@anvil.server.callable
+def leave_group():
+  user = anvil.users.get_user()
+  if user:
+    user['group_name'] = None

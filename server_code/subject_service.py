@@ -3,18 +3,16 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-
+from datetime import datetime, timezone, timedelta
 @anvil.server.callable
 def add_subject(name, type, draft, final, description):
-  from datetime import datetime
   user = anvil.users.get_user()
   group_name = user['group_name'] if user else None
 
-  # Count existing subjects for this group
   existing = app_tables.subjects.search(group=group_name)
   count = len(list(existing))
 
-  if count >= 5:
+  if count >= 8:
     return 'too_many'
 
   app_tables.subjects.add_row(
@@ -40,3 +38,8 @@ def get_subject_by_order(order):
   user = anvil.users.get_user()
   group_name = user['group_name'] if user else None
   return app_tables.subjects.get(group=group_name, order=order)
+@anvil.server.callable
+def delete_file(file_id):
+  file = app_tables.files.get_by_id(file_id)
+  if file:
+    file.delete()

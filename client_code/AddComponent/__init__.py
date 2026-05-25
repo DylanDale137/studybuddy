@@ -15,7 +15,18 @@ class AddComponent(AddComponentTemplate):
     self.final = None
     self.description = ""
     self.label_message.visible = False
-
+    user = anvil.users.get_user()
+    if user and user["group_name"]:
+      self.card_access.visible = True
+      
+    elif user and not user["group_name"]:
+      self.card_access.visible = False
+      
+      self.display_error("User is not in a group. Please join or create a group")
+    elif not user:
+      self.card_access.visible = False
+      
+      self.display_error("User is not logged in. Please login to access")
   @handle("button_add", "click")
   def button_add_click(self, **event_args):
     if not self.text_box_name.text:
@@ -38,7 +49,7 @@ class AddComponent(AddComponentTemplate):
       result = anvil.server.call('add_subject', self.name, self.type, self.draft, self.final, self.description)
 
       if result == 'too_many':
-        self.display_error("Too many subjects — maximum of 5 per group.")
+        self.display_error("Too many subjects — maximum of 8 per group.")
       else:
         self.display_save(f"{self.name} subject is {self.type}: draft due: {self.draft}, final due: {self.final}, with a description of {self.description} recorded")
         self.reset_form()
@@ -68,3 +79,9 @@ class AddComponent(AddComponentTemplate):
     self.date_picker_draft.date = None
     self.date_picker_final.date = None
     self.text_box_description.text = ""
+  def display_error(self, message):
+    self.label_message.visible = True
+    self.label_message.foreground = "#ff0000"
+    self.label_message.icon = "fa:exclamation-triangle"
+    self.label_message.bold = True
+    self.label_message.text = message

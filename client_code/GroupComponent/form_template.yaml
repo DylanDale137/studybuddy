@@ -95,18 +95,18 @@ components:
     name: label_5
     properties: {text: Group Name}
     type: Label
-  - layout_properties: {grid_position: 'LBZVUA,EOKTML'}
-    name: text_box_1
+  - layout_properties: {grid_position: 'LBZVUA,YZDEFA'}
+    name: label_group_name_1
     properties: {}
-    type: TextBox
+    type: Label
   - layout_properties: {grid_position: 'OJLBPZ,KYKUGL'}
     name: label_6
     properties: {text: Password}
     type: Label
-  - layout_properties: {grid_position: 'OJLBPZ,VGPPHN'}
-    name: text_box_2
+  - layout_properties: {grid_position: 'OJLBPZ,KNRJAK'}
+    name: label_group_code_1
     properties: {}
-    type: TextBox
+    type: Label
   - layout_properties: {grid_position: 'APHIHE,HOKADZ'}
     name: button_leave
     properties: {role: primary-color, text: Leave group}

@@ -1,6 +1,6 @@
 components:
 - layout_properties: {grid_position: 'VPNVZU,UHLJZE'}
-  name: image_preload
+  name: image_preloader
   properties: {}
   type: Image
 - layout_properties: {grid_position: 'NFNJTK,ABVWQP'}

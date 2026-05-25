@@ -11,7 +11,19 @@ class GroupComponent(GroupComponentTemplate):
     super().__init__(**properties)
     self.name = ""
     self.code = ""
-
+    self.label_group_name_1.text = ""
+    self.label_group_code_1.text = ""
+    user = anvil.users.get_user()
+    group_name = user["group_name"]
+    code = anvil.server.call('get_group_code', group_name)
+    if group_name:
+      self.card_no_group.visible = False
+      self.card_in_group.visible = True
+      self.label_group_name_1.text = group_name
+      self.label_group_code_1.text = code
+    else:
+      self.card_no_group.visible = True
+      self.card_in_group.visible = False
   @handle("button_create_confirm", "click")
   def button_create_confirm_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -24,7 +36,10 @@ class GroupComponent(GroupComponentTemplate):
       self.code = self.text_box_create_code.text
       anvil.server.call('add_group', self.name, self.code)
       self.display_save(f"{self.name} created with the password: {self.code}")
-      self.reset_form()
+      main_form = get_open_form()
+      main_form.switch_label(self.text_box_create_name.text)
+      main_form.switch_component("home")
+      
 
   def display_error(self, message):
     self.label_message.visible = True
@@ -81,10 +96,25 @@ class GroupComponent(GroupComponentTemplate):
       success = anvil.server.call('check_group', name, code)
       if success:
         self.display_save(f"Successfully joined {name}!")
+        main_form = get_open_form()
+        main_form.switch_label(name)
         self.text_box_join_name.text = ""
         self.text_box_join_code.text = ""
         self.card_join.visible = False
+        
+        main_form.switch_component("home")
       else:
         self.display_error("No group found with that name and password.")
+
+  @handle("button_leave", "click")
+  def button_leave_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('leave_group')
+    self.card_in_group.visible = False
+    self.card_no_group.visible = True
+    self.label_group_name_1.text = ""
+    self.label_group_code_1.text = ""
+    main_form = get_open_form()
+    main_form.switch_label("StudyBuddy")
 
   
