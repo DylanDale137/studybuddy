@@ -146,8 +146,8 @@ db_schema:
     indexes: []
     server: full
     title: Users
-name: Placeholder
-package_name: Placeholder
+name: StudyBuddy
+package_name: StudyBuddy
 runtime_options:
   client_version: '3'
   legacy_features: {bootstrap3: true, class_names: true}
