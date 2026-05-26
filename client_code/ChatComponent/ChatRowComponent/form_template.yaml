@@ -4,7 +4,7 @@ components:
     - components:
       - layout_properties: {grid_position: 'VIQLBY,QFFQYT'}
         name: label_name
-        properties: {}
+        properties: {text: User Name}
         type: Label
       layout_properties: {col_xs: 0, row: APKRTD, width_xs: 4}
       name: card_3
@@ -17,7 +17,7 @@ components:
     - components:
       - layout_properties: {grid_position: 'GFDFMI,YJPSIN'}
         name: label_time
-        properties: {}
+        properties: {text: Time sent}
         type: Label
       layout_properties: {col_xs: 6, row: APKRTD, width_xs: 4}
       name: card_4
@@ -26,7 +26,9 @@ components:
     - components:
       - layout_properties: {grid_position: 'MVQXPL,VORAGV'}
         name: label_text
-        properties: {}
+        properties:
+          text: |
+            Message details
         type: Label
       layout_properties: {col_xs: 0, row: AZMJQG, width_xs: 8}
       name: card_2
