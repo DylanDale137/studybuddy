@@ -1,7 +1,7 @@
 components:
 - layout_properties: {grid_position: 'YGYGDU,QPVVKV'}
   name: headline_2
-  properties: {align: center, bold: true, role: headline, text: Join or create a group to continue}
+  properties: {align: center, bold: true, role: headline, text: Groups}
   type: Label
 - components:
   - layout_properties: {grid_position: 'OLRMYU,GLMBIV'}

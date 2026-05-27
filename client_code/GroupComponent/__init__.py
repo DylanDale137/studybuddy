@@ -38,7 +38,8 @@ class GroupComponent(GroupComponentTemplate):
         self.display_error("You must be logged in to create a group.")
       else:
         self.display_save(f"{self.name} created with the password: {self.code}")
-        self.reset_form()
+        main_form = get_open_form()
+        main_form.switch_component("chat")
       
 
   def display_error(self, message):
@@ -103,6 +104,8 @@ class GroupComponent(GroupComponentTemplate):
         self.text_box_join_name.text = ""
         self.text_box_join_code.text = ""
         self.card_join.visible = False
+        main_form = get_open_form()
+        main_form.switch_component("chat")
   @handle("button_leave", "click")
   def button_leave_click(self, **event_args):
     """This method is called when the button is clicked"""
