@@ -32,11 +32,13 @@ components:
         type: Label
       layout_properties: {col_xs: 0, row: AZMJQG, width_xs: 8}
       name: card_2
-      properties: {role: card}
+      properties: {background: 'theme:Secondary 500', role: card}
       type: ColumnPanel
     - layout_properties: {col_xs: 8, row: AZMJQG, width_xs: 4}
       name: button_delete
       properties:
+        background: '#2'
+        foreground: '#ffff'
         role: primary-color
         text: |
           Delete
