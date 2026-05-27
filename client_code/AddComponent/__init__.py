@@ -51,7 +51,7 @@ class AddComponent(AddComponentTemplate):
       if result == 'too_many':
         self.display_error("Too many subjects — maximum of 8 per group.")
       else:
-        self.display_save(f"{self.name} subject is {self.type}: draft due: {self.draft}, final due: {self.final}, with a description of {self.description} recorded")
+        self.display_save(f"{self.name} {self.type} saved: draft due: {self.draft}, final due: {self.final}, with a description of {self.description}")
         self.reset_form()
 
   def display_error(self, message):
