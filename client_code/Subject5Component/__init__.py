@@ -55,7 +55,7 @@ class Subject5Component(Subject5ComponentTemplate):
     if not user:
       return
     group_name = user["group_name"]
-    messages = anvil.server.call("get_messages", "subject5", group_name)
+    messages = anvil.server.call_s("get_messages", "subject5", group_name)
     self.repeating_panel_2.items = messages
 
   @handle("button_send", "click")

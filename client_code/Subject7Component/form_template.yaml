@@ -1,7 +1,7 @@
 components:
 - layout_properties: {grid_position: 'DTHVRZ,QEHAGF'}
   name: timer_1
-  properties: {interval: 2}
+  properties: {interval: 10}
   type: Timer
 - layout_properties: {grid_position: 'YUPGIN,WKFZFQ'}
   name: label_subject_name
