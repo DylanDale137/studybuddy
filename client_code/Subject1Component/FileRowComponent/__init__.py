@@ -9,7 +9,10 @@ import anvil.server
 class FileRowComponent(FileRowComponentTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    self.image_preloader.source = self.item['File']
+    file = self.item['File']
+    self.image_preloader.source = file
+    
+    self.label_file_name.text = file.name
 
   @handle("button_download", "click")
   def button_download_click(self, **event_args):
