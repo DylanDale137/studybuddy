@@ -65,6 +65,7 @@ class GroupComponent(GroupComponentTemplate):
   @handle("button_create", "click")
   def button_create_click(self, **event_args):
     """This method is called when the button is clicked"""
+    self.card_join.visible = False
     self.card_create.visible = not self.card_create.visible
 
   @handle("button_create_cancel", "click")
@@ -78,11 +79,13 @@ class GroupComponent(GroupComponentTemplate):
   def button_join_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.card_join.visible = not self.card_join.visible
-
+    self.card_create.visible = False
+    
   @handle("button_join_cancel", "click")
   def button_join_cancel_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.card_join.visible = not self.card_join.visible
+    
 
   
   @handle("button_join_confirm", "click")
