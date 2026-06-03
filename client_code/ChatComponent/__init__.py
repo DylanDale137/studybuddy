@@ -6,7 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, timezone, timedelta
-
+#Claude helped alot here
 BRISBANE_OFFSET = timezone(timedelta(hours=10))
 
 class ChatComponent(ChatComponentTemplate):

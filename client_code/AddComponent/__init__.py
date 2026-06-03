@@ -79,9 +79,4 @@ class AddComponent(AddComponentTemplate):
     self.date_picker_draft.date = None
     self.date_picker_final.date = None
     self.text_box_description.text = ""
-  def display_error(self, message):
-    self.label_message.visible = True
-    self.label_message.foreground = "#ff0000"
-    self.label_message.icon = "fa:exclamation-triangle"
-    self.label_message.bold = True
-    self.label_message.text = message
+  
